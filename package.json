@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
-    "test": "tsx --test tests/audio-render.test.ts tests/campaign.test.ts",
+    "test": "tsx --test tests/audio-render.test.ts tests/campaign.test.ts tests/scenarios.test.ts",
     "test:browser": "node tests/browser/playthrough.mjs",
     "test:audio": "node tests/browser/audio.mjs",
     "test:victory": "node tests/browser/victory.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "campaign": "tsx scripts/campaign.ts",
-    "package": "npm run build && python3 scripts/package-release.py"
+    "package": "npm run build && python3 scripts/package-release.py",
+    "scenarios": "tsx scripts/montage-scenarios.ts",
+    "montage": "tsx scripts/render-montage.ts"
   },
   "keywords": [],
   "author": "",

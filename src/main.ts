@@ -48,6 +48,26 @@ document.querySelector('#start')!.addEventListener('click',start);
 document.querySelector('#pause')!.addEventListener('click',pause);
 document.querySelector('#save')!.addEventListener('click',save);
 document.querySelector('#load')!.addEventListener('click',load);
+const saveFile=document.querySelector<HTMLInputElement>('#save-file')!;
+document.querySelector('#export-save')!.addEventListener('click',()=>{
+  try{
+    const url=URL.createObjectURL(new Blob([snapshot(controller)],{type:'application/json'}));
+    const link=document.createElement('a');link.href=url;link.download='neather-earth-save.json';link.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);controller.message='Save file exported.';
+  }catch{controller.message='Start a game and finish construction or the explosion before exporting.';}
+  paint();
+});
+document.querySelector('#import-save')!.addEventListener('click',()=>saveFile.click());
+saveFile.addEventListener('change',async()=>{
+  const file=saveFile.files?.[0];if(!file)return;
+  try{
+    if(file.size>1024*1024)throw new Error('Save too large');
+    const raw=await file.text();restore(controller,raw);
+    audio.stopExplosion();void audio.pause(false);clearInput();audio.stopMusic();
+    controller.message='Save file imported.';canvas.focus();
+  }catch{controller.message='Invalid save file. Current game has been kept.';}
+  saveFile.value='';paint();
+});
 function activateAudio(title:boolean){
   if(!audio.enabled||controller.paused)return;
   void audio.unlock(title).catch(error=>{

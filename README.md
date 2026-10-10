@@ -87,3 +87,11 @@ The public package contains data-only asset segments and rendered audio. It excl
 - `save.ts`: validated browser save records.
 
 Original addresses are retained where useful for comparing states directly. Graphics and constants are read from data-only asset segments. The browser runs the TypeScript reconstruction.
+
+## Scenario saves and battle montage
+
+**Export save** downloads the current game as JSON. **Import save** restores a JSON save, including staged encounters. Invalid files leave the current game intact. The existing Save/Load buttons still use browser storage.
+
+Run `npm run scenarios` to create five scenario saves under `captures/action-montage/saves/`. Import any encounter JSON (not `scenes.json`) to play it. Factory Crossfire, Ridge Ambush, Warbase Siege and Eastern Front start with opposing robots already deployed. Nuclear Finale starts in the nuclear robot's combat menu; press fire to detonate.
+
+Run `npm run montage` to render a 44-second battle montage with FFmpeg installed. The scenario files set initial positions, equipment and resources. The production game simulation determines combat, damage, casualties and nuclear destruction. The first four encounters run at 1.5× playback speed; the nuclear sequence runs at normal speed. Captions identify staged footage. Actual sound events are synchronized over a quiet music track. Generated footage and saves remain local in `captures/`.

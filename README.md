@@ -4,9 +4,37 @@ A playable TypeScript reconstruction of the original game, using its recovered m
 
 The complete game is implemented and verified through a normal-start victory. See [fidelity evidence and browser timing boundaries](docs/fidelity.md).
 
+**[Play in your browser](https://realill.github.io/neather-earth-rebuilt/)** · **[Watch the gameplay montage](https://realill.github.io/neather-earth-rebuilt/media/)**
+
+## Gameplay video
+
+[![Watch the 53-second gameplay montage](public/media/battle.png)](https://realill.github.io/neather-earth-rebuilt/media/)
+
+**Menu → build and launch a robot → battles across the map → nuclear blast.**
+
+The opening uses normal controls. Battles use staged save files and the production game simulation, with synchronized effects and music. [Watch with playback controls](https://realill.github.io/neather-earth-rebuilt/media/) or [download the MP4](https://realill.github.io/neather-earth-rebuilt/media/gameplay.mp4).
+
+## Screenshots
+
+| Title menu | Build a robot |
+| --- | --- |
+| ![Title menu](public/media/menu.png) | ![Robot construction](public/media/construction.png) |
+| **Robot battle** | **Nuclear blast** |
+| ![Robot battle at an enemy warbase](public/media/battle.png) | ![Nuclear blast destroys a warbase](public/media/nuclear-blast.png) |
+
+## Sources and acknowledgments
+
+- **[Nether Earth annotated disassembly](https://github.com/santiontanon/netherearth-disassembly), by Santiago Ontañón** — the primary reference for reconstructing mechanics, graphics tables, UI and sound. We used [revision 762e33e](https://github.com/santiontanon/netherearth-disassembly/tree/762e33e4bb1a5d2f608c6436d489a8376ef11cd5).
+- **[World of Spectrum: Nether Earth](https://worldofspectrum.net/item/0003391/)** — original archive and [instructions](https://worldofspectrum.net/pub/sinclair/games-info/n/NetherEarth.txt), used to verify game data and controls.
+- **[MDL Z80 assembler](https://github.com/santiontanon/mdlz80optimizer)** — assembled the reference privately for byte comparison and data-address extraction.
+- **[JSSpeccy 3](https://github.com/gasman/jsspeccy3)** — source of the 48K ROM used privately to recover sound behavior.
+- **[z80-emulator / TRS-80 TypeScript tools](https://github.com/lkesteloot/trs80)** — the development-only CPU oracle for differential checks and audio extraction.
+
+See [detailed provenance and rights](docs/provenance.md) and [NOTICE](NOTICE). Original executables, tape images, ROMs and disassembly are excluded from this repository. Original graphics/music retain their rights; Apache 2.0 applies to the reconstruction code.
+
 ## Publish on GitHub Pages
 
-The repository is intended for `realill/neather-earth-rebuilt` and the playable URL will be:
+The game is published from `realill/neather-earth-rebuilt` at:
 
 **https://realill.github.io/neather-earth-rebuilt/**
 
@@ -23,7 +51,7 @@ This follows [GitHub's Pages workflow documentation](https://docs.github.com/en/
 
 Run `npm run package` to create:
 
-- `release/neather-earth-rebuilt-github.zip`: source, tests, reference material, corrected music and the deployment workflow. Extract it and upload its contents to the repository.
+- `release/neather-earth-rebuilt-github.zip`: source, tests, data-only assets, corrected music, screenshots, montage and the deployment workflow. Extract it and upload its contents to the repository.
 - `release/neather-earth-rebuilt-site.zip`: the prebuilt playable website. Extract it into a static web host's public directory; no build tools are needed. For a separate GitHub Pages repository, these files can be published from `main` / root using the “Deploy from a branch” setting.
 - `release/SHA256SUMS.txt`: archive checksums.
 
@@ -94,4 +122,4 @@ Original addresses are retained where useful for comparing states directly. Grap
 
 Run `npm run scenarios` to create five scenario saves under `captures/action-montage/saves/`. Import any encounter JSON (not `scenes.json`) to play it. Factory Crossfire, Ridge Ambush, Warbase Siege and Eastern Front start with opposing robots already deployed. Nuclear Finale starts in the nuclear robot's combat menu; press fire to detonate.
 
-Run `npm run montage` to render a 44-second battle montage with FFmpeg installed. The scenario files set initial positions, equipment and resources. The production game simulation determines combat, damage, casualties and nuclear destruction. The first four encounters run at 1.5× playback speed; the nuclear sequence runs at normal speed. Captions identify staged footage. Actual sound events are synchronized over a quiet music track. Generated footage and saves remain local in `captures/`.
+Run `npm run montage` to render the 53-second menu → construction → battle → nuclear montage with FFmpeg and DejaVu fonts installed. The scenario files set initial positions, equipment and resources. The production game simulation determines combat, damage, casualties and nuclear destruction. The first four encounters run at 1.5× playback speed; the nuclear sequence runs at normal speed. Captions identify staged footage. Actual sound events are synchronized over a quiet music track. The renderer writes `gameplay.mp4`, four screenshots, saves and a report to `captures/action-montage/`. Intermediate video/audio files are created in a temporary directory and automatically removed. Published media lives in `public/media/`. [Download the five scenario saves](https://realill.github.io/neather-earth-rebuilt/media/scenario-saves.zip) and use **Import save** in the game to play them.

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+release/
+__pycache__/
+reference/
+public/assets/original.bin
+public/assets/symbols.json
+scripts/extract-original.py
+scripts/extract-audio.ts
+tests/oracle.ts
+tests/fidelity.test.ts
+tests/input-save.test.ts
+tests/ui.test.ts
+tests/explosion.test.ts
+captures/

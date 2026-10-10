@@ -1,0 +1,29 @@
+{
+  "name": "neather-earth-rebuilt",
+  "version": "1.0.0",
+  "description": "A source-grounded TypeScript reconstruction of Nether Earth for ZX Spectrum",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "test": "tsx --test tests/audio-render.test.ts tests/campaign.test.ts",
+    "test:browser": "node tests/browser/playthrough.mjs",
+    "test:audio": "node tests/browser/audio.mjs",
+    "test:victory": "node tests/browser/victory.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "campaign": "tsx scripts/campaign.ts",
+    "package": "npm run build && python3 scripts/package-release.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "z80-emulator": "^2.3.0"
+  },
+  "private": true,
+  "type": "module"
+}

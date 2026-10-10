@@ -1,0 +1,14 @@
+Neather Earth Rebuilt
+Copyright 2026 Ilya Platonov and contributors.
+
+The reconstruction source code is licensed under Apache License 2.0.
+It draws on the annotated Nether Earth disassembly by Santiago Ontañón:
+https://github.com/santiontanon/netherearth-disassembly
+
+Original Nether Earth graphics, font, map, interface data, music and sound
+remain the property of their respective rights holders. The Apache license
+does not relicense those original assets (public/assets/game-data.json,
+public/assets/title.wav and public/assets/audio.json).
+
+No original game executable, tape image, Spectrum ROM or disassembly is
+included in this distribution.
